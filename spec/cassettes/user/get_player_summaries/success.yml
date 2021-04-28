@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=<steam_api_key>&steamids=76561198211387647%2C76561198017705925
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      vary:
+      - Accept-Encoding
+      expires:
+      - Wed, 28 Apr 2021 03:54:32 GMT
+      date:
+      - Wed, 28 Apr 2021 03:54:32 GMT
+      content-length:
+      - '1556'
+      connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"response":{"players":[{"steamid":"76561198211387647","communityvisibilitystate":3,"profilestate":1,"personaname":"Klarysa","profileurl":"https://steamcommunity.com/id/klarysa/","avatar":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd080649de4161c40de346e19ed975bcb75633b8.jpg","avatarmedium":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd080649de4161c40de346e19ed975bcb75633b8_medium.jpg","avatarfull":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd080649de4161c40de346e19ed975bcb75633b8_full.jpg","avatarhash":"dd080649de4161c40de346e19ed975bcb75633b8","lastlogoff":1619318632,"personastate":0,"primaryclanid":"103582791429521408","timecreated":1439071190,"personastateflags":0},{"steamid":"76561198017705925","communityvisibilitystate":3,"profilestate":1,"personaname":"Xander","profileurl":"https://steamcommunity.com/id/xanderriga/","avatar":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e6/e6e8ea1047f48cb2193ec0d4433772e69e58fc0e.jpg","avatarmedium":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e6/e6e8ea1047f48cb2193ec0d4433772e69e58fc0e_medium.jpg","avatarfull":"https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e6/e6e8ea1047f48cb2193ec0d4433772e69e58fc0e_full.jpg","avatarhash":"e6e8ea1047f48cb2193ec0d4433772e69e58fc0e","lastlogoff":1619238282,"personastate":0,"primaryclanid":"103582791457253832","timecreated":1260332992,"personastateflags":0,"loccountrycode":"CA","locstatecode":"BC"}]}}'
+  recorded_at: Wed, 28 Apr 2021 03:54:32 GMT
+recorded_with: VCR 6.0.0

@@ -23,6 +23,11 @@ module Steam
         client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
       end
 
+      def get_player_summaries(steamids)
+        steam_ids_string = steamids.join(',')
+        client.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/", { steamids: steam_ids_string})
+      end
+
       private
 
       def client

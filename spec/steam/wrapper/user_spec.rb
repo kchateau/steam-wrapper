@@ -52,4 +52,14 @@ RSpec.describe Steam::Wrapper::User do
       end
     end
   end
+
+  describe ".get_player_summaries" do
+    subject { described_class.new.get_player_summaries(steamids) }
+    let(:steamids) { ['76561198211387647', '76561198017705925'] }
+    it "returns a parsed list of player summaries" do
+      VCR.use_cassette("user/get_player_summaries/success") do
+        expect(subject).to have_key("response")
+      end
+    end
+  end
 end
