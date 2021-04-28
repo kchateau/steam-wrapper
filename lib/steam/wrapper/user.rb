@@ -15,6 +15,10 @@ module Steam
         client.get("http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/", { steamid: steam_id, appid: app_id })
       end
 
+      def get_user_stats_for_game(steam_id, app_id)
+        client.get("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/", { steamid: steam_id, appid: app_id })
+      end
+
       private
 
       def client
