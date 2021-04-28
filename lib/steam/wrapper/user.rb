@@ -7,6 +7,14 @@ module Steam
         client.get("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/", { steamid: steam_id })
       end
 
+      def get_owned_games(steam_id)
+        client.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/", { steamid: steam_id })
+      end
+
+      def get_player_achievements(steam_id, app_id)
+        client.get("http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/", { steamid: steam_id, appid: app_id })
+      end
+
       private
 
       def client
