@@ -42,4 +42,14 @@ RSpec.describe Steam::Wrapper::User do
       end
     end
   end
+
+  describe ".get_recently_played_games" do
+    subject { described_class.new.get_recently_played_games(steam_id) }
+    let(:steam_id) { '76561198211387647' }
+    it "returns a parsed list of users recently played games" do
+      VCR.use_cassette("user/get_recently_played_games/success") do
+        expect(subject).to have_key("response")
+      end
+    end
+  end
 end

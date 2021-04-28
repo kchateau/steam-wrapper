@@ -19,6 +19,10 @@ module Steam
         client.get("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/", { steamid: steam_id, appid: app_id })
       end
 
+      def get_recently_played_games(steam_id)
+        client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
+      end
+
       private
 
       def client
