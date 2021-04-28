@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.google.com?key=<steam_api_key>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 27 Apr 2021 23:16:07 GMT
+      expires:
+      - "-1"
+      cache-control:
+      - private, max-age=0
+      content-type:
+      - text/html; charset=ISO-8859-1
+      p3p:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      server:
+      - gws
+      x-xss-protection:
+      - '0'
+      x-frame-options:
+      - SAMEORIGIN
+      set-cookie:
+      - 1P_JAR=2021-04-27-23; expires=Thu, 27-May-2021 23:16:07 GMT; path=/; domain=.google.com;
+        Secure, NID=214=Ku8oWs2BcUoHdIEriVQgR9Y3vdKs3LlkG9tJF9Rs4e116MXMc3vmXZCMJLFXvjh9ffeBQTQQ88BEl65Lc43ZVsVQgRaGLiQ_9rw7T6PNrB8qSNgQFUOvPwobtYygd8j_IU3CEp4jQ19G5xU-JSUxY8P-XmjVb4OYQCLQ7v6Q-gQ;
+        expires=Wed, 27-Oct-2021 23:16:07 GMT; path=/; domain=.google.com; HttpOnly
+      alt-svc:
+      - h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"foo":"bar"}'
+  recorded_at: Tue, 27 Apr 2021 23:16:07 GMT
+recorded_with: VCR 6.0.0

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "steam/wrapper"
+require 'vcr'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -13,3 +14,11 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :faraday
+
+  config.filter_sensitive_data("<steam_api_key>") { ENV["STEAM_API_KEY"] }
+end
+
