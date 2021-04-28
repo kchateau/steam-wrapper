@@ -14,3 +14,5 @@ gem "rubocop", "~> 1.7"
 gem "faraday"
 
 gem 'vcr'
+
+gem 'pry'
