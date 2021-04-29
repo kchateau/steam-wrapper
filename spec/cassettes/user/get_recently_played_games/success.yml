@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=<steam_api_key>&steamid=76561198211387647
+    uri: http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=<steam_api_key>&steamid=76561198017705925
     body:
       encoding: US-ASCII
       string: ''
@@ -21,15 +21,18 @@ http_interactions:
       vary:
       - Accept-Encoding
       expires:
-      - Wed, 28 Apr 2021 03:10:04 GMT
+      - Thu, 29 Apr 2021 01:44:26 GMT
       date:
-      - Wed, 28 Apr 2021 03:10:04 GMT
+      - Thu, 29 Apr 2021 01:44:26 GMT
       content-length:
-      - '30'
+      - '1182'
       connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"response":{"total_count":0}}'
-  recorded_at: Wed, 28 Apr 2021 03:10:04 GMT
+      string: '{"response":{"total_count":4,"games":[{"appid":1172470,"name":"Apex
+        Legends","playtime_2weeks":541,"playtime_forever":591,"img_icon_url":"070902d2389878ac4bf29efb5b92832c60bdf24e","img_logo_url":"6a3169969cd4a66c7ae29a4934990160bccea1e4","playtime_windows_forever":591,"playtime_mac_forever":0,"playtime_linux_forever":0},{"appid":252950,"name":"Rocket
+        League","playtime_2weeks":125,"playtime_forever":86498,"img_icon_url":"9ad6dd3d173523354385955b5fb2af87639c4163","img_logo_url":"3854e40582bc14b8ba3c9ee163a0fa64bc538def","playtime_windows_forever":9342,"playtime_mac_forever":0,"playtime_linux_forever":0},{"appid":681280,"name":"Descenders","playtime_2weeks":18,"playtime_forever":1222,"img_icon_url":"80b57583da284b38313881eae876e27f9293f67b","img_logo_url":"0467890180a2eb1349d035e2c7bb4ff7fbcac7de","playtime_windows_forever":1222,"playtime_mac_forever":0,"playtime_linux_forever":0},{"appid":286160,"name":"Tabletop
+        Simulator","playtime_2weeks":5,"playtime_forever":9605,"img_icon_url":"19f5b90e3c7084758f885ded843631b13929fa26","img_logo_url":"4cd5c6a6580ae6e85026ac670f9fa1a0b45372c3","playtime_windows_forever":6147,"playtime_mac_forever":0,"playtime_linux_forever":0}]}}'
+  recorded_at: Thu, 29 Apr 2021 01:44:26 GMT
 recorded_with: VCR 6.0.0

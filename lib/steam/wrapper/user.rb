@@ -1,5 +1,6 @@
 require 'steam/wrapper/client'
 require 'steam/wrapper/entities/friend'
+require 'steam/wrapper/entities/game'
 
 module Steam
   module Wrapper
@@ -12,7 +13,17 @@ module Steam
       end
 
       def get_owned_games(steam_id)
-        client.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/", { steamid: steam_id })
+        response = client.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/", { steamid: steam_id, include_appinfo: true })
+        response["response"]["games"].map do |game|
+          Steam::Wrapper::Entities::Game.new(
+            appid: game["appid"],
+            name: game["name"],
+            playtime_forever: game["playtime_forever"],
+            playtime_2weeks: "",
+            playtime_windows_forever: game["playtime_windows_forever"],
+            playtime_mac_forever: game["playtime_mac_forever"],
+            playtime_linux_forever: game["playtime_linux_forever"]
+        ) end
       end
 
       def get_player_achievements(steam_id, app_id)
@@ -24,7 +35,17 @@ module Steam
       end
 
       def get_recently_played_games(steam_id)
-        client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
+        response = client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
+        response["response"]["games"].map do |game|
+          Steam::Wrapper::Entities::Game.new(
+            appid: game["appid"],
+            name: game["name"],
+            playtime_forever: game["playtime_forever"],
+            playtime_2weeks: game["playtime_2weeks"],
+            playtime_windows_forever: game["playtime_windows_forever"],
+            playtime_mac_forever: game["playtime_mac_forever"],
+            playtime_linux_forever: game["playtime_linux_forever"]
+        ) end
       end
 
       def get_player_summaries(steamids)
