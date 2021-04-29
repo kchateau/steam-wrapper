@@ -1,10 +1,14 @@
 require 'steam/wrapper/client'
+require 'steam/wrapper/entities/friend'
 
 module Steam
   module Wrapper
     class User
       def get_friend_list(steam_id)
-        client.get("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/", { steamid: steam_id })
+        response = client.get("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/", { steamid: steam_id })
+        response["friendslist"]["friends"].map do |friend|
+          Steam::Wrapper::Entities::Friend.new(steam_id: friend["steam_id"], relationship: friend["relationship"], friend_since: friend["friend_since"])
+        end
       end
 
       def get_owned_games(steam_id)

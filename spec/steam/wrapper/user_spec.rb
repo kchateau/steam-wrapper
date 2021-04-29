@@ -6,7 +6,7 @@ RSpec.describe Steam::Wrapper::User do
     let(:steam_id) { '76561198211387647' }
     it "returns a parsed list of steam friends" do
       VCR.use_cassette("user/get_friend_list/success") do
-        expect(subject).to have_key("friendslist")
+        expect(subject).to all( be_a(Steam::Wrapper::Entities::Friend) )
       end
     end
   end
