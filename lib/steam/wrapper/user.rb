@@ -1,6 +1,7 @@
 require 'steam/wrapper/client'
 require 'steam/wrapper/entities/friend'
 require 'steam/wrapper/entities/game'
+require 'steam/wrapper/entities/player'
 
 module Steam
   module Wrapper
@@ -34,6 +35,7 @@ module Steam
         client.get("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/", { steamid: steam_id, appid: app_id })
       end
 
+      # Currently fails if the user doesnt have any recently played games
       def get_recently_played_games(steam_id)
         response = client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
         response["response"]["games"].map do |game|
@@ -50,7 +52,18 @@ module Steam
 
       def get_player_summaries(steamids)
         steam_ids_string = steamids.join(',')
-        client.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/", { steamids: steam_ids_string})
+        response = client.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/", { steamids: steam_ids_string})
+        response["response"]["players"].map do |player|
+          Steam::Wrapper::Entities::Player.new(
+            steam_id: player["steam_id"],
+            personaname: player["personaname"],
+            profileurl: player["profileurl"],
+            avatar: player["avatar"],
+            lastlogoff: player["lastlogoff"],
+            timecreated: player["timecreated"],
+            loccountrycode: player["loccountrycode"],
+            locstatecode: player["locstatecode"],
+          ) end
       end
 
       private

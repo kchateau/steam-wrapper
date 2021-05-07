@@ -36,7 +36,7 @@ RSpec.describe Steam::Wrapper::User do
     subject { described_class.new.get_user_stats_for_game(steam_id, app_id) }
     let(:steam_id) { '76561198211387647' }
     let(:app_id) { '440' }
-    it "returns a parsed list of player achievements" do
+    it "returns a parsed list of player stats for a game" do
       VCR.use_cassette("user/get_user_stats_for_game/success") do
         expect(subject).to have_key("playerstats")
       end
@@ -58,7 +58,7 @@ RSpec.describe Steam::Wrapper::User do
     let(:steamids) { ['76561198211387647', '76561198017705925'] }
     it "returns a parsed list of player summaries" do
       VCR.use_cassette("user/get_player_summaries/success") do
-        expect(subject).to have_key("response")
+        expect(subject).to all( be_a(Steam::Wrapper::Entities::Player) )
       end
     end
   end
