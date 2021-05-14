@@ -2,6 +2,7 @@ require 'steam/wrapper/client'
 require 'steam/wrapper/entities/friend'
 require 'steam/wrapper/entities/game'
 require 'steam/wrapper/entities/player'
+require 'steam/wrapper/entities/achievement'
 
 module Steam
   module Wrapper
@@ -28,7 +29,10 @@ module Steam
       end
 
       def get_player_achievements(steam_id, app_id)
-        client.get("http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/", { steamid: steam_id, appid: app_id })
+        response = client.get("http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/", { steamid: steam_id, appid: app_id })
+        response["playerstats"]["achievements"].map do |achievement|
+          Steam::Wrapper::Entities::Achievement.new(apiname: achievement["apiname"], achieved: achievement["achieved"], unlocktime: achievement["unlocktime"])
+        end
       end
 
       def get_user_stats_for_game(steam_id, app_id)

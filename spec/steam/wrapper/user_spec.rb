@@ -27,7 +27,7 @@ RSpec.describe Steam::Wrapper::User do
     let(:app_id) { '440' }
     it "returns a parsed list of player achievements" do
       VCR.use_cassette("user/get_player_achievements/success") do
-        expect(subject).to have_key("playerstats")
+        expect(subject).to all(be_a(Steam::Wrapper::Entities::Achievement))
       end
     end
   end
