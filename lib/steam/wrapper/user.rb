@@ -42,7 +42,9 @@ module Steam
       # Currently fails if the user doesnt have any recently played games
       def get_recently_played_games(steam_id)
         response = client.get("http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/", { steamid: steam_id })
-        response["response"]["games"].map do |game|
+        games = response["response"]["games"]
+        return [] unless games
+        games.map do |game|
           Steam::Wrapper::Entities::Game.new(
             appid: game["appid"],
             name: game["name"],

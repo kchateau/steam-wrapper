@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=<steam_api_key>&steamid=76561198211387647
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-eresult:
+      - '1'
+      content-type:
+      - application/json; charset=UTF-8
+      vary:
+      - Accept-Encoding
+      expires:
+      - Tue, 18 May 2021 23:01:20 GMT
+      date:
+      - Tue, 18 May 2021 23:01:20 GMT
+      content-length:
+      - '30'
+      connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"response":{"total_count":0}}'
+  recorded_at: Tue, 18 May 2021 23:01:20 GMT
+recorded_with: VCR 6.0.0
